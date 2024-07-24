@@ -5,7 +5,7 @@ test(`TC_1:Salesforce Login`, async ({}) =>{
  const browserContext = await browser.newContext();
  const page = await browserContext.newPage();
     await page.goto("https://login.salesforce.com/");
-    await page.locator("#username").fill("ramyasekar207-nn6a@force.com");
+    await page.locator("#username").fill("ramya@testleaf.com");
     await page.locator("#password").fill("Password@1");
    await page.waitForTimeout(5000);
    await page.locator("#Login").click();
