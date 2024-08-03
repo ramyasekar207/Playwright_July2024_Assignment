@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test(`D5: Create New Account`, async ({page}) => {
-
+page.setDefaultTimeout(60000);
 //Navigate into Leaftaps applicaion by using given credentials     
 await page.goto("https://login.salesforce.com/");
 // await page.fill("#username","ramya@testleaf.com")
@@ -26,9 +26,7 @@ await page.getByText("View All").click();
 
 await page.getByPlaceholder("Search apps or items...").fill("Service");
 
-await page.waitForTimeout(3000);
-
-await page.locator("[role='application'] one-app-launcher-app-tile").first().click();
+await page.locator("[role='application'] one-app-launcher-app-tile").first().click({timeout:4000});
 
 //Click Accounts link in Services Application
 await page.click("[title='Accounts']")
@@ -38,11 +36,13 @@ await page.click("[title='Accounts']")
 
 await page.click("div[title='New']");
 
-await page.locator("input[name='Name']").fill("Ramya Account");
+let name = "Ramya Account"
+
+await page.locator("input[name='Name']").fill(name);
 
 await page.click("[name='SaveEdit']");
 
-await expect(page.locator(".toastMessage")).toHaveText(`Account "Ramya Account" was created.`)
+await expect(page.locator(".toastMessage")).toHaveText(`Account ${name} was created.`)
 
 await page.waitForTimeout(3000);
  
