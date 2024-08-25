@@ -1,5 +1,5 @@
 import { expect,test } from "@playwright/test";
-import { getAccessToken } from "../authHelper";
+import { getAccessToken } from "./authHelper";
 
 let Opp_ID : any;
 let url : any;
